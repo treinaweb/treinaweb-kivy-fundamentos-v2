@@ -1,5 +1,5 @@
-from gui.layouts.box import BoxApp
+from gui.layouts.float import FloatApp
 
 
 if __name__ == "__main__":
-    BoxApp().run()
+    FloatApp().run()
