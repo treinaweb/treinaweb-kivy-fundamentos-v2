@@ -1,5 +1,5 @@
-from gui.layouts.float import FloatApp
+from gui.layouts.grid import GridApp
 
 
 if __name__ == "__main__":
-    FloatApp().run()
+    GridApp().run()
