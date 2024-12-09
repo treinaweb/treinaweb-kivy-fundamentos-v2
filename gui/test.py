@@ -3,7 +3,8 @@ from kivy.uix.boxlayout import BoxLayout
 
 
 class Primary(BoxLayout):
-    ...
+    def test(self):
+        print("O botão foi clicado")
 
 
 class TestApp(App):

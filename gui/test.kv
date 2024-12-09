@@ -1,8 +1,12 @@
 <Primary>:
     orientation: 'vertical'
     Label:
+        id: primary_label
         text: 'Minha label'
         font_size: 20
     Button:
         text: 'Meu botão'
         font_size: 30
+        on_state: print(self.state)
+        on_press: primary_label.text = 'O botão foi pressionado'
+        on_release: root.test()
