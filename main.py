@@ -1,5 +1,5 @@
-from gui.test import TestApp
+from gui.layouts.box import BoxApp
 
 
 if __name__ == "__main__":
-    TestApp().run()
+    BoxApp().run()
