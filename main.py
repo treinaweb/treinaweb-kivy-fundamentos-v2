@@ -1,5 +1,5 @@
-from gui.layouts.grid import GridApp
+from gui.layouts.stack import StackApp
 
 
 if __name__ == "__main__":
-    GridApp().run()
+    StackApp().run()
