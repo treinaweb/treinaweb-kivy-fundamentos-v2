@@ -1,0 +1,35 @@
+<Screem>:
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+
+    ScrollView:
+        BoxLayout:
+            id: clients
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+
+    BoxLayout:
+        size_hint_y: None
+        height: 40
+
+        Label:
+            text: 'Nome'
+        TextInput:
+            id: name
+        Label:
+            text: 'Idade'
+        TextInput:
+            id: age
+
+    BoxLayout:
+        size_hint_y: None
+        height: 40
+
+        Button:
+            text: 'Cadastrar'
+        Button:
+            text: 'Editar'
+        Button:
+            text: 'Remover'
