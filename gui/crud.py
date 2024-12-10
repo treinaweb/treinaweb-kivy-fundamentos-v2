@@ -14,11 +14,20 @@ class ClientButton(ToggleButton):
         self.text = f'{client_name} - {client_age}'
         self.group = 'clients'
 
+    def _do_release(self, *args):
+        Screem().select_client(self.client_id)
+        return super()._do_release(*args)
+
 
 class Screem(BoxLayout):
+    client_id = None
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.list_clients()
+
+    def select_client(self, client_id):
+        Screem.client_id = client_id
 
     def add_client(self):
         name = self.ids.name.text
@@ -42,6 +51,14 @@ class Screem(BoxLayout):
             self.ids.clients.add_widget(
                 ClientButton(client.id, client.name, client.age)
             )
+
+    def delete_client(self):
+        with Session() as session:
+            client = session.get(Client, Screem.client_id)
+            session.delete(client)
+            session.commit()
+
+        self.list_clients()
 
 
 class CrudApp(App):
