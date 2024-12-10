@@ -30,15 +30,12 @@ class Screem(BoxLayout):
         Screem.client_id = client_id
 
     def add_client(self):
-        name = self.ids.name.text
-        age = self.ids.age.text
-
         with Session() as session:
-            session.add(Client(name=name, age=age))
+            session.add(Client(name=self.__get_name(), age=self.__get_age()))
             session.commit()
 
-        self.ids.name.text = ''
-        self.ids.age.text = ''
+        self.__clean_fields()
+        
         self.list_clients()
 
     def list_clients(self):
@@ -59,6 +56,27 @@ class Screem(BoxLayout):
             session.commit()
 
         self.list_clients()
+
+    def update_client(self):
+        with Session() as session:
+            client = session.get(Client, Screem.client_id)
+            client.name = self.__get_name()
+            client.age = self.__get_age()
+            session.commit()
+
+        self.__clean_fields()
+
+        self.list_clients()
+
+    def __get_name(self):
+        return self.ids.name.text
+    
+    def __get_age(self):
+        return self.ids.age.text
+    
+    def __clean_fields(self):
+        self.ids.name.text = ''
+        self.ids.age.text = ''
 
 
 class CrudApp(App):
